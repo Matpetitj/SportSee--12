@@ -1,0 +1,18 @@
+.navigation {
+    display: flex;
+    width: 100%;
+
+    .navigationList {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 18%;
+        width: 100%;
+
+        li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    }
+}

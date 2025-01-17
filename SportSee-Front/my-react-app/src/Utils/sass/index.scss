@@ -1,0 +1,28 @@
+@use "../../components/Header/header.scoped.scss";
+@use "../../pages/userDashboard.scoped.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+* {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 500;
+    min-width: 1024px;
+    min-height: 780px;
+}
+
+#root {
+    width: 100%;
+}
+
+.globalWrapper {
+    width: auto;
+    height: auto;
+}

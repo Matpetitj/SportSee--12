@@ -1,0 +1,23 @@
+.stats {
+    display: flex;
+    flex-direction: row;
+    
+    .graphSection {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .valuesSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 20%;
+        
+        .values {
+            height: 23%;
+            width: 100%;
+        }
+    }
+}
+

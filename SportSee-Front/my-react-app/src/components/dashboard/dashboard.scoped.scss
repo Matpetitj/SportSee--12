@@ -1,0 +1,10 @@
+@use "../stats/stats.scoped.scss";
+@use "../sideBar/sideBar.scoped.scss";
+
+.dashboard {
+    display: flex;
+
+    .dashboardSection {
+        padding: 50px;
+    }
+}

@@ -1,0 +1,20 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 70px;
+}
+
+.welcomeMessage {
+    font-weight: 500;
+    font-size: 42px;
+}
+
+.congratsMessage {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#welcomeName {
+    color: #ff0101;
+}
