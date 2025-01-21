@@ -13,37 +13,37 @@ const Stats = () => {
             <div className="valuesSection">
                 <div className="values">
                     <div className="valueIcon">
-                        <img src={Calories} alt="Icone de stats" />
+                        <img src={Calories} id="calories" alt="Icone de stats" />
                         <div className="value">
                             <p className="number">1,930kCal</p>
-                            <p>Calories</p>
+                            <p className="type">Calories</p>
                         </div>
                     </div>
                 </div>
                 <div className="values">
                     <div className="valueIcon">
-                        <img src={Proteines} alt="Icone de stats" />
+                        <img src={Proteines} id="proteines" alt="Icone de stats" />
                         <div className="value">
                             <p className="number">155g</p>
-                            <p>Proteines</p>
+                            <p className="type">Proteines</p>
                         </div>
                     </div>
                 </div>
                 <div className="values">
                     <div className="valueIcon">
-                        <img src={Glucides} alt="Icone de stats" />
+                        <img src={Glucides} id="glucides" alt="Icone de stats" />
                         <div className="value">
                             <p className="number">290g</p>
-                            <p>Glucides</p>
+                            <p className="type">Glucides</p>
                         </div>
                     </div>
                 </div>
                 <div className="values">
                     <div className="valueIcon">
-                        <img src={Lipides} alt="Icone de stats" />
+                        <img src={Lipides} id="lipides" alt="Icone de stats" />
                         <div className="value">
                             <p className="number">50g</p>
-                            <p>Lipides</p>
+                            <p className="type">Lipides</p>
                         </div>
                     </div>
                 </div>
