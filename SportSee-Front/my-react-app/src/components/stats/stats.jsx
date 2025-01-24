@@ -3,12 +3,23 @@ import Calories from "../../assets/icons/energy.svg";
 import Proteines from "../../assets/icons/chicken.svg";
 import Glucides from "../../assets/icons/apple.svg";
 import Lipides from "../../assets/icons/cheeseburger.svg";
+import DailyBarChart from "../../components/dailyBarChart/barChart.jsx";
+import SessionDuration from "../../components/sessionDuration/duration.jsx";
+import Performances from "../../components/performances/performanceRadarChart.jsx";
+import Score from "../../components/score/scoreRadialChart.jsx";
 
 const Stats = () => {
     return (
         <div className="stats">
             <div className="graphSection">
-                Texte
+                <div className="daily">
+                    < DailyBarChart />
+                </div>
+                <div className="detailsGraph">
+                    {/* <SessionDuration />
+                    <Performances />
+                    <Score /> */}
+                </div>
             </div>
             <div className="valuesSection">
                 <div className="values">

@@ -1,11 +1,21 @@
 import "./UserDashboard.scoped.scss"
-import Dashboard from "../components/dashboard/dashboard"
+import SideBar from "../components/sideBar/sideBar";
+import Stats from "../components/stats/stats";
+import Welcome from "../components/welcome/welcome";
 
 const UserDashboard = () => {
     return (
-        <div>
-            <Dashboard />
-        </div>
+            <div className="dashboard">
+                <SideBar />
+                <div className="dashboardSection">
+                    {/* <div className="welcomeSection">
+                        <Welcome />
+                    </div>
+                    <div className="statsSection">
+                        <Stats />
+                    </div> */}
+                </div>
+            </div>
     );
 }
 

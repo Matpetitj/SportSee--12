@@ -8,14 +8,10 @@ function App() {
 
   return (
     <>
-      <div className='globalWrapper'>
-        <div>
-          <Header />
-        </div>
+        <Header />
         <Routes>
           <Route path='/' element={<UserDashboard />} />
         </Routes>
-      </div>
     </>
   )
 }
