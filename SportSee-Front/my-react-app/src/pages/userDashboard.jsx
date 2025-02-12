@@ -8,12 +8,8 @@ const UserDashboard = () => {
             <div className="dashboard">
                 <SideBar />
                 <div className="dashboardSection">
-                    {/* <div className="welcomeSection">
                         <Welcome />
-                    </div>
-                    <div className="statsSection">
                         <Stats />
-                    </div> */}
                 </div>
             </div>
     );

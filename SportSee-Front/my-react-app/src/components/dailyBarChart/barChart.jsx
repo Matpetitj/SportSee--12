@@ -1,5 +1,6 @@
 import "./barChart.scoped.scss"
 
+import React from "react";
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function DailyBarChart (){
@@ -49,30 +50,92 @@ function DailyBarChart (){
     },
 ];
 
+const customizedLegend = () => {
+  return (
+    <div className="legendWrapper">
+      <div className="legendKg">
+        <div
+            className="legendDot"
+            style={{ backgroundColor: "black" }}
+        ></div>
+        <div>Poids (kg)</div>
+      </div>
+      <div className="legendCal">
+        <div
+            className="legendDot"
+            style={{ backgroundColor: "red" }}
+        ></div>
+        <div>Calories brûlées (kCal)</div>
+      </div>
+    </div>
+  )
+}
+
   return (
     <>
-    <div className=""><h3>Activité quotidienne</h3></div>
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-        <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
-      </BarChart>
-    </ResponsiveContainer>
+        <ResponsiveContainer width="100%" height="90%">
+        <div className="dailyTitle"><h3>Activité quotidienne</h3></div>
+          <BarChart
+            data={data}
+            margin={{
+              top: 40,
+              right: 10,
+              left: 50,
+              bottom: 5,
+            }}
+            barSize={10}
+            barGap={8}
+          >
+            <XAxis
+              dataKey={"name"}
+              height={55}
+              width={"auto"}
+              tickLine={false}
+              axisLine={{ stroke: "#d1d2d6" }}
+              dy={15}
+              style={{
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  fill: "#9B9EAC",
+              }}
+            />
+            {/*POIDS*/}
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              axisLine={false}
+              tickLine={false}
+              style={{
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  fill: "#9B9EAC",
+              }}
+              dx={25}
+              domain={["dataMin -1", "dataMax +2"]}
+              interval={1}
+            />
+            <CartesianGrid strokeDasharray="2" vertical={false} />
+            {/*CALORIES*/}
+            <YAxis
+              yAxisId="left"
+              orientation="left"
+              axisLine={false}
+              tickLine={false}
+              hide
+            />
+            <Tooltip />
+            <Legend verticalAlign="top" height={50} content={customizedLegend}/>
+            <Bar dataKey="uv" 
+            fill="black"
+            yAxisId="right"
+            radius={[4.5, 4.5, 0, 0]}/>
+            <Bar 
+            dataKey="pv"
+            fill="red"
+            yAxisId="left"
+            radius={[4.5, 4.5, 0, 0]}/>
+          </BarChart>
+        </ResponsiveContainer>
     </>
   );
 }

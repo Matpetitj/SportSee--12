@@ -16,46 +16,46 @@ const Stats = () => {
                     < DailyBarChart />
                 </div>
                 <div className="detailsGraph">
-                    {/* <SessionDuration />
+                    <SessionDuration />
                     <Performances />
-                    <Score /> */}
+                    <Score />
                 </div>
             </div>
             <div className="valuesSection">
                 <div className="values">
-                    <div className="valueIcon">
-                        <img src={Calories} id="calories" alt="Icone de stats" />
-                        <div className="value">
-                            <p className="number">1,930kCal</p>
-                            <p className="type">Calories</p>
-                        </div>
+                    <div className="valueIcon" id="calories">
+                        <img src={Calories} alt="Icone de stats" />
+                    </div>
+                    <div className="value">
+                        <p className="number">1,930kCal</p>
+                        <p className="type">Calories</p>
                     </div>
                 </div>
                 <div className="values">
-                    <div className="valueIcon">
-                        <img src={Proteines} id="proteines" alt="Icone de stats" />
-                        <div className="value">
-                            <p className="number">155g</p>
-                            <p className="type">Proteines</p>
-                        </div>
+                    <div className="valueIcon" id="proteines">
+                        <img src={Proteines} alt="Icone de stats" />
+                    </div>
+                    <div className="value">
+                        <p className="number">155g</p>
+                        <p className="type">Proteines</p>
                     </div>
                 </div>
                 <div className="values">
-                    <div className="valueIcon">
-                        <img src={Glucides} id="glucides" alt="Icone de stats" />
-                        <div className="value">
-                            <p className="number">290g</p>
-                            <p className="type">Glucides</p>
-                        </div>
+                    <div className="valueIcon" id="glucides">
+                        <img src={Glucides}  alt="Icone de stats" />
+                    </div>
+                    <div className="value">
+                        <p className="number">290g</p>
+                        <p className="type">Glucides</p>
                     </div>
                 </div>
                 <div className="values">
-                    <div className="valueIcon">
-                        <img src={Lipides} id="lipides" alt="Icone de stats" />
-                        <div className="value">
-                            <p className="number">50g</p>
-                            <p className="type">Lipides</p>
-                        </div>
+                    <div className="valueIcon" id="lipides">
+                        <img src={Lipides} alt="Icone de stats" />
+                    </div>
+                    <div className="value">
+                        <p className="number">50g</p>
+                        <p className="type">Lipides</p>
                     </div>
                 </div>
             </div>

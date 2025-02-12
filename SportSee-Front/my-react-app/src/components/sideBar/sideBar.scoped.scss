@@ -1,11 +1,11 @@
 .sideBar {
     display: flex;
     flex-direction: column;
-    background-color: #000000;
-    min-height: 100%;
+    background-color: black;
     width: 100px;
+    min-height: 100%;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 
     .sportCTA {
         display: flex;
@@ -29,10 +29,8 @@
     }
 
     .copyright {
-        font-weight: 500;
         color: #FFFFFF;
         font-size: 12px;
-        display: flex;
         rotate: 270deg;
         text-wrap: nowrap;
     }

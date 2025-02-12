@@ -1,6 +1,6 @@
 import "./scoreRadialChart.scoped.scss"
 
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis } from 'recharts';
 
 
 
@@ -12,43 +12,7 @@ function ScoreRadialChart () {
       uv: 31.47,
       pv: 2400,
       fill: '#8884d8',
-    },
-    {
-      name: '25-29',
-      uv: 26.69,
-      pv: 4567,
-      fill: '#83a6ed',
-    },
-    {
-      name: '30-34',
-      uv: 15.69,
-      pv: 1398,
-      fill: '#8dd1e1',
-    },
-    {
-      name: '35-39',
-      uv: 8.22,
-      pv: 9800,
-      fill: '#82ca9d',
-    },
-    {
-      name: '40-49',
-      uv: 8.63,
-      pv: 3908,
-      fill: '#a4de6c',
-    },
-    {
-      name: '50+',
-      uv: 2.63,
-      pv: 4800,
-      fill: '#d0ed57',
-    },
-    {
-      name: 'unknow',
-      uv: 6.67,
-      pv: 4800,
-      fill: '#ffc658',
-    },
+    }
 ];
 
 const style = {
@@ -58,23 +22,48 @@ const style = {
     lineHeight: '24px',
 };
 
+  const CustomizedLegend = () => {
     return (
-        <div className="radialChart">
-            <div className="scoreTitle"><h3>Score</h3></div>
-            <ResponsiveContainer width="100%" height="100%">
-                <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10} data={data}>
-                <RadialBar
-                    minAngle={15}
-                    label={{ position: 'insideStart', fill: '#fff' }}
-                    background
-                    clockWise
-                    dataKey="uv"
-                />
-                <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style}/>
-                </RadialBarChart>
-            </ResponsiveContainer>
-        </div>
-    )
+      <div className="legendWrapper">
+          <div className="score">12%</div>
+          <div className="description">de votre objectif</div>
+      </div>
+    );
+  };
+
+  return (
+    <>
+    <div className="radialChart">
+        <ResponsiveContainer width="100%" height="100%">
+        <div className="scoreTitle"><h3>Score</h3></div>
+          <RadialBarChart
+               startAngle={90}
+               endAngle={450}
+               innerRadius="65%"
+               outerRadius="75%" 
+               data={data}>
+            <RadialBar
+              minAngle={15}
+              label={{ position: 'insideStart', fill: '#fff' }}
+              background
+              clockWise
+              dataKey="uv"
+            />
+            <Legend content={CustomizedLegend} 
+            // wrapperStyle={{
+            //   position: "absolute",
+            //   top: "200px",
+            //   left: "206px",
+            //   transform: "translate(-42%, -42%)",
+            //   textAlign: "center",}} 
+            />
+            <PolarAngleAxis type="number" domain={[0, 1]} tick={false} />
+          </RadialBarChart>
+        </ResponsiveContainer>
+      </div>
+    </>
+  );
+
 }
 
 export default ScoreRadialChart;
