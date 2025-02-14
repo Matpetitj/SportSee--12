@@ -10,10 +10,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: 15px;
         
         .daily {
             width: 100%;
-            height: 48%;
+            height: 52%;
             background-color: #FBFBFB;
             border-radius: 5px;
         }
@@ -23,7 +24,7 @@
             flex-direction: row;
             justify-content: space-between;
             width: 100%;
-            height: 48%;
+            height: 44%;
         }
     }
 

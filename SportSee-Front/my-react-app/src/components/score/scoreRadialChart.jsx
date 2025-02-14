@@ -6,13 +6,12 @@ import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis 
 
 function ScoreRadialChart () {
 
-  const data = [
-    {
-      name: '18-24',
-      uv: 31.47,
-      pv: 2400,
-      fill: '#8884d8',
-    }
+const data = [
+  {
+    name: '18-24',
+    uv: 31,
+    fill: '#FF0000',
+  }
 ];
 
 const style = {
