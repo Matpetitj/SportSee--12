@@ -10,7 +10,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/' element={<UserDashboard />} />
+        <Route path='/:userId' element={<UserDashboard />} />
       </Routes>
     </>
   )
