@@ -7,7 +7,7 @@ const Welcome = ({userId}) => {
     useEffect(() => {
         const fetchData = async () => {
                 const userData = await getUserScore(userId);
-                console.log(userData);
+                // console.log(userData);
                 if(userData){
                     setFirstName(userData.firstName)
                 }

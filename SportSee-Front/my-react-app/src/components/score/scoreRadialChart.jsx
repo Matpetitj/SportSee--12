@@ -1,68 +1,57 @@
-import "./scoreRadialChart.scoped.scss"
+import "./scoreRadialChart.scoped.scss";
+import { useEffect, useState } from "react";
+import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis } from "recharts";
+import { getUserScore } from "../../services/APIService";
 
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis } from 'recharts';
+function ScoreRadialChart({ userId }) {
+    const [score, setScore] = useState(0);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            if (userId) {
+                const userData = await getUserScore(userId);
+                if (userData && userData.score !== undefined) {
+                    setScore(userData.score);
+                }
+            }
+        };
+        fetchData();
+    }, [userId]);
 
+    const data = [
+        {
+            name: "Score",
+            uv: score * 100, // Conversion en pourcentage
+            fill: "#FF0000",
+        },
+    ];
 
-function ScoreRadialChart () {
+    const CustomizedLegend = () => {
+        return (
+            <div className="legendWrapper">
+                <div className="score">{`${score * 100}%`}</div>
+                <div className="description">de votre objectif</div>
+            </div>
+        );
+    };
 
-const data = [
-  {
-    name: '18-24',
-    uv: 31,
-    fill: '#FF0000',
-  }
-];
-
-const style = {
-    top: '50%',
-    right: 0,
-    transform: 'translate(0, -50%)',
-    lineHeight: '24px',
-};
-
-  const CustomizedLegend = () => {
     return (
-      <div className="legendWrapper">
-          <div className="score">12%</div>
-          <div className="description">de votre objectif</div>
-      </div>
+        <div className="radialChart">
+            <ResponsiveContainer width="100%" height="100%">
+                <div className="scoreTitle"><h3>Score</h3></div>
+                <RadialBarChart startAngle={90} endAngle={450} innerRadius="65%" outerRadius="75%" data={data}>
+                    <RadialBar
+                        minAngle={15}
+                        background
+                        clockWise
+                        dataKey="uv"
+                    />
+                    <Legend content={CustomizedLegend} />
+                    <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+                </RadialBarChart>
+            </ResponsiveContainer>
+        </div>
     );
-  };
-
-  return (
-    <>
-    <div className="radialChart">
-        <ResponsiveContainer width="100%" height="100%">
-        <div className="scoreTitle"><h3>Score</h3></div>
-          <RadialBarChart
-               startAngle={90}
-               endAngle={450}
-               innerRadius="65%"
-               outerRadius="75%" 
-               data={data}>
-            <RadialBar
-              minAngle={15}
-              label={{ position: 'insideStart', fill: '#fff' }}
-              background
-              clockWise
-              dataKey="uv"
-            />
-            <Legend content={CustomizedLegend} 
-            // wrapperStyle={{
-            //   position: "absolute",
-            //   top: "200px",
-            //   left: "206px",
-            //   transform: "translate(-42%, -42%)",
-            //   textAlign: "center",}} 
-            />
-            <PolarAngleAxis type="number" domain={[0, 1]} tick={false} />
-          </RadialBarChart>
-        </ResponsiveContainer>
-      </div>
-    </>
-  );
-
 }
 
 export default ScoreRadialChart;

@@ -1,24 +1,55 @@
 import "./stats.scoped.scss"
+import { useState, useEffect } from "react";
+import { getUserScore } from "../../services/APIService.js";
+
 import Calories from "../../assets/icons/energy.svg";
 import Proteines from "../../assets/icons/chicken.svg";
 import Glucides from "../../assets/icons/apple.svg";
 import Lipides from "../../assets/icons/cheeseburger.svg";
+
 import DailyBarChart from "../../components/dailyBarChart/barChart.jsx";
 import SessionDuration from "../../components/sessionDuration/duration.jsx";
 import Performances from "../../components/performances/performanceRadarChart.jsx";
 import Score from "../../components/score/scoreRadialChart.jsx";
 
-const Stats = () => {
+
+
+const Stats = ({ userId }) => {
+    const [nutrients, setNutrients] = useState(null);
+
+    useEffect (() => {
+        const fetchData = async () => {
+            const userData = await getUserScore(userId);
+            if(userData) {
+                 setNutrients({
+                    calories: userData.keyData.calorieCount,
+                    proteins: userData.keyData.proteinCount,
+                    carbs: userData.keyData.carbohydrateCount,
+                    lipids: userData.keyData.lipidCount,
+                 });
+            }
+        };
+        if(userId){
+            fetchData();
+        }
+    }, [userId]);
+
+    if(!nutrients){
+        return(
+            <p>Test</p>//modifier le texte
+        )
+    }
+
     return (
         <div className="stats">
             <div className="graphSection">
                 <div className="daily">
-                    < DailyBarChart />
+                    < DailyBarChart userId={userId} />
                 </div>
                 <div className="detailsGraph">
-                    <SessionDuration />
-                    <Performances />
-                    <Score />
+                    <SessionDuration userId={userId}/>
+                    <Performances userId={userId}/>
+                    <Score userId={userId}/>
                 </div>
             </div>
             <div className="valuesSection">
@@ -27,7 +58,7 @@ const Stats = () => {
                         <img src={Calories} alt="Icone de stats" />
                     </div>
                     <div className="value">
-                        <p className="number">1,930kCal</p>
+                        <p className="number">{nutrients.calories.toLocaleString()}kCal</p>
                         <p className="type">Calories</p>
                     </div>
                 </div>
@@ -36,7 +67,7 @@ const Stats = () => {
                         <img src={Proteines} alt="Icone de stats" />
                     </div>
                     <div className="value">
-                        <p className="number">155g</p>
+                        <p className="number">{nutrients.proteins}g</p>
                         <p className="type">Proteines</p>
                     </div>
                 </div>
@@ -45,7 +76,7 @@ const Stats = () => {
                         <img src={Glucides}  alt="Icone de stats" />
                     </div>
                     <div className="value">
-                        <p className="number">290g</p>
+                        <p className="number">{nutrients.carbs}g</p>
                         <p className="type">Glucides</p>
                     </div>
                 </div>
@@ -54,7 +85,7 @@ const Stats = () => {
                         <img src={Lipides} alt="Icone de stats" />
                     </div>
                     <div className="value">
-                        <p className="number">50g</p>
+                        <p className="number">{nutrients.lipids}g</p>
                         <p className="type">Lipides</p>
                     </div>
                 </div>
@@ -64,18 +95,3 @@ const Stats = () => {
 }
 
 export default Stats;
-
-// fetch("url")
-// .then((response)=>{
-// console.log(response);
-// if(response.ok) 
-// return response.json()
-// })
-// .then((data)=>{
-// console.log(data);
-// display(data);
-// })
-// .catch((error)=>{
-// console.log(error.message);
-// alert("Veuillez contacter l'admin");
-// })

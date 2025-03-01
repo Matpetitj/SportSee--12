@@ -22,7 +22,7 @@ export const fetchUserData = async (userId, formatFunction) => {
     if (isDataMocked) {
         const userMockData = getMockedData(userId, USER_MAIN_DATA);
         if (userMockData) {
-            console.log("Données simulées trouvées :", userMockData);
+            // console.log("Données simulées trouvées :", userMockData);
             return formatFunction(userMockData); // On formate bien les données mockées
         }
         console.warn(`Aucune donnée simulée trouvée pour l'ID ${userId}`);
@@ -32,7 +32,7 @@ export const fetchUserData = async (userId, formatFunction) => {
             const response = await fetch(`${API_URL}/${userId}`);
             if (!response.ok) throw new Error("Erreur lors de la récupération des données");
             const data = await response.json();
-            return formatFunction(data);
+            return formatFunction(data.data);
         } catch (error) {
             console.error("Erreur lors de la récupération des données user :", error.message);
             return null;
@@ -47,7 +47,7 @@ export const fetchUserActivity = async (userId, formatFunction) => {
     if (isDataMocked) {
         const userMockData = getMockedData(userId, USER_ACTIVITY);
         if (userMockData) {
-            console.log("Données simulées trouvées :", userMockData);
+            // console.log("Données simulées trouvées :", userMockData);
             return formatFunction(userMockData); // On formate bien les données mockées
         }
         console.warn(`Aucune donnée simulée trouvée pour l'ID ${userId}`);
@@ -57,7 +57,7 @@ export const fetchUserActivity = async (userId, formatFunction) => {
             const response = await fetch(`${API_URL}/${userId}/activity`);
             if (!response.ok) throw new Error("Erreur lors de la récupération des données");
             const data = await response.json();
-            return formatFunction(data);
+            return formatFunction(data.data);
         } catch (error) {
             console.error("Erreur lors de la récupération des données activité :", error.message);
             return null;
@@ -72,7 +72,7 @@ export const fetchUserAverageSessions = async (userId, formatFunction) => {
     if (isDataMocked) {
         const userMockData = getMockedData(userId, USER_AVERAGE_SESSIONS);
         if (userMockData) {
-            console.log("Données simulées trouvées :", userMockData);
+            // console.log("Données simulées trouvées :", userMockData);
             return formatFunction(userMockData); //On formate bien les données mockées
         }
         console.warn(`Aucune donnée simulée trouvée pour l'ID ${userId}`);
@@ -82,7 +82,7 @@ export const fetchUserAverageSessions = async (userId, formatFunction) => {
             const response = await fetch(`${API_URL}/${userId}/average-sessions`);
             if (!response.ok) throw new Error("Erreur lors de la récupération des données");
             const data = await response.json();
-            return formatFunction(data);
+            return formatFunction(data.data);
         } catch (error) {
             console.error("Erreur lors de la récupération des données sessions :", error.message);
             return null;
@@ -97,7 +97,7 @@ export const fetchUserPerformance = async (userId, formatFunction) => {
     if (isDataMocked) {
         const userMockData = getMockedData(userId, USER_PERFORMANCE);
         if (userMockData) {
-            console.log("Données simulées trouvées :", userMockData);
+            // console.log("Données simulées trouvées :", userMockData);
             return formatFunction(userMockData); //On formate bien les données mockées
         }
         console.warn(`Aucune donnée simulée trouvée pour l'ID ${userId}`);
@@ -107,7 +107,7 @@ export const fetchUserPerformance = async (userId, formatFunction) => {
             const response = await fetch(`${API_URL}/${userId}/performance`);
             if (!response.ok) throw new Error("Erreur lors de la récupération des données");
             const data = await response.json();
-            return formatFunction(data);
+            return formatFunction(data.data);
         } catch (error) {
             console.error("Erreur lors de la récupération des données performance :", error.message);
             return null;

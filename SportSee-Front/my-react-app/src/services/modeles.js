@@ -18,7 +18,7 @@
             lastName: "",
             age: "",
             score: "",
-            keyData: "",
+            keyData: [],
         };
     }
 };
@@ -46,13 +46,11 @@ export const formatUserActivity = (data) => {
 export const formatUserAverageSessions = (data) => {
     if(data){
         return {
-            userId: data.userId,
             sessions: data.sessions.map(({ day, sessionLength }) => ({ day, sessionLength })),
         };
     } else {
         return {
-            userId: "",
-            sessions: "",
+            sessions: [],
         };
     }
 };
