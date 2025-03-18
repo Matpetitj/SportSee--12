@@ -184,12 +184,18 @@ export const USER_PERFORMANCE = [
     {
        userId: 12,
        kind: {
-          1: "cardio",
-          2: "energy",
-          3: "endurance",
-          4: "strength",
-          5: "speed",
-          6: "intensity",
+         //  1: "cardio",
+         //  2: "energy",
+         //  3: "endurance",
+         //  4: "strength",
+         //  5: "speed",
+         //  6: "intensity",
+         1: "Intensité",
+         2: "Vitesse",
+         3: "Force",
+         4: "Endurance",
+         5: "Energie",
+         6: "Cardio",
        },
        data: [
           {
@@ -221,12 +227,18 @@ export const USER_PERFORMANCE = [
     {
        userId: 18,
        kind: {
-          1: "cardio",
-          2: "energy",
-          3: "endurance",
-          4: "strength",
-          5: "speed",
-          6: "intensity",
+         //  1: "cardio",
+         //  2: "energy",
+         //  3: "endurance",
+         //  4: "strength",
+         //  5: "speed",
+         //  6: "intensity",
+          1: "Intensité",
+          2: "Vitesse",
+          3: "Force",
+          4: "Endurance",
+          5: "Energie",
+          6: "Cardio",
        },
        data: [
           {

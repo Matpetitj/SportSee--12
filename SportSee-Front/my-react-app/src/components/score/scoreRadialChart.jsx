@@ -26,19 +26,23 @@ function ScoreRadialChart({ userId }) {
         },
     ];
 
-    const CustomizedLegend = () => {
-        return (
-            <div className="legendWrapper">
-                <div className="score">{`${score * 100}%`}</div>
-                <div className="description">de votre objectif</div>
-            </div>
-        );
-    };
+    // const CustomizedLegend = () => {
+    //     return (
+    //         <div className="legendWrapper">
+    //             <div className="score">{`${score * 100}%`}</div>
+    //             <div className="description">de votre objectif</div>
+    //         </div>
+    //     );
+    // };
 
     return (
         <div className="radialChart">
             <ResponsiveContainer width="100%" height="100%">
                 <div className="scoreTitle"><h3>Score</h3></div>
+                <div className="legend">
+                    <div className="score">{`${score * 100}%`}</div>
+                    <div className="description">de votre <br/> objectif</div>
+                </div>
                 <RadialBarChart startAngle={90} endAngle={450} innerRadius="65%" outerRadius="75%" data={data}>
                     <RadialBar
                         minAngle={15}
@@ -46,7 +50,7 @@ function ScoreRadialChart({ userId }) {
                         clockWise
                         dataKey="uv"
                     />
-                    <Legend content={CustomizedLegend} />
+                    {/* <Legend content={CustomizedLegend} /> */}
                     <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
                 </RadialBarChart>
             </ResponsiveContainer>
