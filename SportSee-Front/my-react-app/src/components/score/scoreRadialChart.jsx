@@ -8,13 +8,24 @@ function ScoreRadialChart({ userId }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (userId) {
+            try {
+                if (!userId) return; // Vérifie que userId est défini
+    
                 const userData = await getUserScore(userId);
-                if (userData && userData.score !== undefined) {
-                    setScore(userData.score);
+    
+                if (userData?.score === undefined) {
+                    console.warn("Aucune donnée de score trouvée.");
+                    setScore(0); // Réinitialise le score si aucune donnée valide
+                    return;
                 }
+    
+                setScore(userData.score);
+            } catch (error) {
+                console.error("Erreur lors de la récupération du score :", error);
+                setScore(0); // Réinitialise en cas d'erreur
             }
         };
+    
         fetchData();
     }, [userId]);
 
@@ -25,15 +36,6 @@ function ScoreRadialChart({ userId }) {
             fill: "#FF0000",
         },
     ];
-
-    // const CustomizedLegend = () => {
-    //     return (
-    //         <div className="legendWrapper">
-    //             <div className="score">{`${score * 100}%`}</div>
-    //             <div className="description">de votre objectif</div>
-    //         </div>
-    //     );
-    // };
 
     return (
         <div className="radialChart">

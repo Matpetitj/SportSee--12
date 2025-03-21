@@ -9,13 +9,24 @@ function SessionDuration({ userId }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!userId) return; // Vérifie que userId est défini
-      const sessionData = await getUserAverageSessions(userId);
-      // console.log(sessionData);
-      if (sessionData) {
+      try {
+        if (!userId) return; // Vérifie que userId est défini
+
+        const sessionData = await getUserAverageSessions(userId);
+
+        if (!sessionData?.sessions || sessionData.sessions.length === 0) {
+          console.warn("Aucune donnée de session trouvée.");
+          setData([]); // Évite d'afficher des données erronées
+          return;
+        }
+
         setData(sessionData.sessions);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des sessions :", error);
+        setData([]); // Réinitialise les données en cas d'erreur
       }
     };
+
     fetchData();
   }, [userId]);
 
@@ -45,7 +56,7 @@ function SessionDuration({ userId }) {
 
   return (
     <div className="lineChart">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="95%" height="100%">
         <div className="sessionTitle">Durée moyenne des <br /> sessions</div>
         <LineChart
           data={data}

@@ -4,6 +4,9 @@
     background: linear-gradient(90deg, rgba(255,0,0,1) 74%, rgba(219,0,0,1) 74%);
     border-radius: 5px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .sessionTitle {
         position: absolute;

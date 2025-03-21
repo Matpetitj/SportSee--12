@@ -8,14 +8,26 @@ function PerformanceRadarChart({ userId }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!userId) return; // Vérifie que userId est défini
-      const performanceData = await getUserPerformance(userId);
-      if (performanceData) {
-        setData(performanceData.data);
-      }
+        try {
+            if (!userId) return; // Vérifie que userId est défini
+
+            const performanceData = await getUserPerformance(userId);
+
+            if (!performanceData?.data) {
+                console.warn("Aucune donnée de performance trouvée.");
+                setData([]); // Réinitialise à un tableau vide pour éviter les erreurs
+                return;
+            }
+
+            setData(performanceData.data);
+        } catch (error) {
+            console.error("Erreur lors de la récupération des performances :", error);
+            setData([]); // Réinitialise en cas d'erreur
+        }
     };
+
     fetchData();
-  }, [userId]);
+}, [userId]);
 
   return (
     <div className="radarChart">

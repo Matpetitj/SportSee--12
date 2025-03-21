@@ -8,18 +8,26 @@ const DailyBarChart = ({ userId }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const userActivity = await getUserActivity(userId);
-      if (userActivity && userActivity.sessions) {
+      try {
+        const userActivity = await getUserActivity(userId);
+  
+        if (!userActivity || !userActivity.sessions) {
+          throw new Error("Données utilisateur invalides ou indisponibles");
+        }
+  
         setData(
           userActivity.sessions.map((session, index) => ({
             name: index + 1, // Jour sous forme de numéro (1, 2, 3...)
-            kg: session.kilogram, // Poids (kg)
-            kCal: session.calories, // Calories brûlées
+            kg: session.kilogram ?? 0, // Poids (kg), valeur par défaut 0 en cas de problème
+            kCal: session.calories ?? 0, // Calories brûlées, valeur par défaut 0
           }))
         );
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+        setData([]); // Réinitialisation des données en cas d'erreur
       }
     };
-
+  
     if (userId) {
       fetchData();
     }
