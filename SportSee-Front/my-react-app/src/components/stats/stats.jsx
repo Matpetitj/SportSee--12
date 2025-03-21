@@ -36,7 +36,7 @@ const Stats = ({ userId }) => {
 
     if(!nutrients){
         return(
-            <p>Test</p>//modifier le texte
+            <p className="errorText">Il y a une erreur dans la récupération de vos données</p>//modifier le texte
         )
     }
 

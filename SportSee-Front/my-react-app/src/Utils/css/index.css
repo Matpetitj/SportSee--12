@@ -120,6 +120,10 @@ header {
   color: grey;
 }
 
+.errorText {
+  font-size: 25px;
+}
+
 .sideBar {
   display: flex;
   flex-direction: column;
@@ -166,7 +170,7 @@ header {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  position: relative;
   gap: 15px;
 }
 
